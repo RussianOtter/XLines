@@ -7,9 +7,9 @@ XLines - Executable Lines
 
 XLines `(executable lines)` is a Python program which allows users to call any section of code within the program they are running by adding a tag! This feature allows people to reduce repeating processes without having to define a function!
 
-xLines [Executable Lines]
-Programmer: @Russian_Otter
-Inspiration: @js.avi
+	xLines [Executable Lines]
+	Programmer: @Russian_Otter
+	Inspiration: @js.avi
 
 Usage
 -----
