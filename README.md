@@ -7,60 +7,78 @@ XLines - Executable Lines
 
 XLines `(executable lines)` is a Python program which allows users to call any section of code within the program they are running by adding a tag! This feature allows people to reduce repeating processes without having to define a function!
 
+xLines [Executable Lines]
+Programmer: @Russian_Otter
+Inspiration: @js.avi
+
+Usage
+-----
+
+```python
+>>> import xlines
+... filename,tab = "test.py","\t"
+... xl = xlines.XLines(filename,tab)
+... 
+... def function():
+... 	print "Welcome To", ##xl-welcome-2
+... 	print "XLines"
+... 	print a
+... 
+... xl.run("welcome",{"a":5})
+Welcome To XLines
+5
+```
+
+About
+-----
+
+XLines/Executable-Lines is a program that allows you to call any marked portion of code within the program you are running or external programs that you have saved!
+With XLines you can dramatically shorten the number of lines used in a program without using 'def', and you can call the marked code from anywhere!
+
 Syntax
-======
+------
 
-**Adding Tags**
+To add a marker to a portion of code use the following syntax on the line you wish to start with:
+	
+	##xl-macro-lines
+	
+	'macro' -> The name of the marker
+	'lines' -> the number of lines you want to run after the current line is run
 
-Tags are inserted onto the line of code you which to run. The syntax is `##lx-name-lines` and can be put anywhere (even if it is on a tab)!
-
-*Explained Example:*
-
-```python
-import xlines
-xl = xlines.XLines("test.py","\t")
-
-def function():
-	print "hello"
-	print "this" ##xl-func-3
-	print "is"
-	print "a"
-	print "function"
-```
-
-In this example the flag starts at `print "this"`, the call-name is `func`, and the flag includes the next `3` lines. When you call this using xlines it should look like this:
+Example:
 
 ```python
-xl.run("func")
-```
-```
-this
-is
-a
-function
+>>> print "hi" ##xl-hi-1
+... print "bye"
 ```
 
-Complete Example
-================
+
+To execute a marker, use the following syntax:
+	
+```python
+xl.run(macro)
+```
+
+	'macro' -> The name of the marker you wish to call
+
+
+To replace a value in the code you want to execute use following syntax:
 
 ```python
-import xlines
-xl = xlines.XLines("test.py","\t")
+xl.run(macro, switch=(find, replace))
+```
 
-def algorithm():
-	if 1**2.0 == (0.5*2)**2:
-		for _ in range(3): ##xl-math-2
-			print (10**2)/3.5
-			print ~_
-		print "Finished"
+	'macro' -> The name of the marker you wish to call
+	'find' -> Target code/value
+	'replace' -> substitute code/value
 
-xl.run("math")
+
+To add local variables to your target code use the following syntax:
+
+```python
+xl.run(macro, {"var": value})
 ```
-```
-28.5714285714
--1
-28.5714285714
--2
-28.5714285714
--3
-```
+
+	'macro' -> The name of the marker you wish to call
+	'var' -> The name of the local variable you wish to add
+	'value' -> The value of the variable
